@@ -1,4 +1,5 @@
 $(document).ready(function() {
+	playTheme();
 	playGame();
 })
 
@@ -31,15 +32,17 @@ function playGame(){
   	})
   	$(document).keydown(function(e){
 		if (e.keyCode == 88) {
-	    	//playCool();
+	    	playCool();
 	    	$('.ryu-still').hide();
+	    	$('.ryu-ready').hide();
 	    	$('.ryu-cool').show();
 	    }
 	}) 
 	$(document).keyup(function(e){
 		if (e.keyCode == 88) {
-	  //   	$('#cool')[0].pause();
-			// $('#cool')[0].load();
+	     	$('#ryu-cool-sound')[0].pause();
+			$('#ryu-cool-sound')[0].load();
+			//$('#theme-sound')[0].play();
 	    	$('.ryu-still').show();
 	    	$('.ryu-cool').hide();
     	}
@@ -52,8 +55,30 @@ function playHadouken() {
   	$('#hadouken-sound')[0].play();
 }
 
-// function playCool() {
-// 	$('#ryu-cool-sound')[0].volume = 0.5;
-// 	$('#ryu-cool-sound')[0].load();
-// 	$('#ryu-cool-sound')[0].play();
+
+function playCool() {
+	if ('#ryu-cool-sound'){
+		$('#theme-sound')[0].pause();
+		$('#ryu-cool-sound')[0].volume = 0.5;
+		//$('#ryu-cool-sound')[0].load();
+		$('#ryu-cool-sound')[0].play();
+	}
+}
+
+function playTheme(){
+	$('#theme-sound')[0].volume =0.5;
+	//$('#theme-sound')[0].load();
+	$('#theme-sound')[0].play();
+}
+
+// var audioElement = $("#ryu-cool-sound")[0];
+// audioElement.addEventListener("paused", function() 
+// { document.getElementsById("#ryu-cool-sound")[0].play(); }, false);
+// var audioElement = !audioElement.paused;
+// function playCool () {
+//   if (isPlaying) {
+//     //$('#theme-song')[0].pause();
+//      $('#ryu-cool-sound')[0].load()
+//     $('#ryu-cool-sound')[0].play();
+//   }
 // }
